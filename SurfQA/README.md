@@ -8,4 +8,4 @@ Client.py - a python script containing demos for calling SurfQA as a service and
 
 
 
-
+Note: model weights "best.pt" are available here: https://drive.google.com/file/d/1vlunbov-4zywAdXJzEwJnUspf0sr9Y-9/view?usp=sharing 
