@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.3.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>***PROVJERA SLIKA</c>
+<l>ImagePath := 'C:/Users/arso/Desktop/Projekt/test_caltab 15 dec 2022/caltabovi'</l>
+<l>CalibObjDescr := 'C:/Users/arso/Desktop/Projekt/caltab/calplate.cpd'</l>
+<l>SxIn := 5.75e-006</l>
+<l>SyIn := 5.75e-006</l>
+<l>FocusIn := 0.050</l>
+<c></c>
+<l>cam_calib (ImagePath, CalibObjDescr, SxIn, SyIn, FocusIn, CameraParameters, Sx, Sy, Focus, Kappa, Cx, Cy, ImgWidth, ImgHeight)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+<procedure name="evaluate_caltab_image_pattern_coverage">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="CalibDataID" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="PatternCoverageScore" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* This procedure checks if</c>
+<c>* a calibration plate of model CalibDAtaID</c>
+<c>* can be found on the Image</c>
+<c>* and returns a corresponding score.</c>
+<l>PatternCoverageScore := 1.0</l>
+<l>try</l>
+<l>    find_calib_object (Image, CalibDataID, 0, 0, 0, [], [])</l>
+<c></c>
+<l>catch (Exception)</l>
+<l>    PatternCoverageScore := 0</l>
+<l>endtry</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="evaluate_caltab_image_pattern_coverage">
+<parameters>
+<parameter id="CalibDataID"/>
+<parameter id="Image"/>
+<parameter id="PatternCoverageScore"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

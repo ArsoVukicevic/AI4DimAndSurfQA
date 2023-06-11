@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.3.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>create_caltab (27, 31, 0.00258065, [13, 6, 6, 20, 20], [15, 6, 24, 6, 24], \
+              'light_on_dark', 'calplate.cpd', 'caltab.ps')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

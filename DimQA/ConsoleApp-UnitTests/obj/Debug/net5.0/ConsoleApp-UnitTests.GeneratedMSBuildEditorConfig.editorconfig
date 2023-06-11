@@ -1,0 +1,10 @@
+is_global = true
+build_property.TargetFramework = net5.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.PublishSingleFile = 
+build_property.IncludeAllContentForSelfExtract = 
+build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
+build_property.RootNamespace = ConsoleApp_UnitTests
+build_property.ProjectDir = D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\00 C# Cannon\ConsoleApp-UnitTests\

@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.3.0">
+<library/>
+<procedure name="cam_calib">
+<interface>
+<ic>
+<par name="ImagePath" base_type="ctrl" dimension="0"/>
+<par name="CalibObjDescr" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="CameraParameters" base_type="ctrl" dimension="0"/>
+<par name="Sx" base_type="ctrl" dimension="0"/>
+<par name="Sy" base_type="ctrl" dimension="0"/>
+<par name="Focus" base_type="ctrl" dimension="0"/>
+<par name="Kappa" base_type="ctrl" dimension="0"/>
+<par name="Cx" base_type="ctrl" dimension="0"/>
+<par name="Cy" base_type="ctrl" dimension="0"/>
+<par name="ImgWidth" base_type="ctrl" dimension="0"/>
+<par name="ImgHeight" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>list_files(ImagePath, 'files', Files)</l>
+<l>read_image(Image, Files[0])</l>
+<l>get_image_size(Image, Width, Height)</l>
+<l>gen_cam_par_area_scan_division (0.050, 0, 5.75e-006, 5.75e-006, Width / 2, Height / 2, Width, Height, StartCamParam)</l>
+<c></c>
+<l>tuple_images := []</l>
+<l>for i := 0 to |Files|-1 by 1</l>
+<c>    </c>
+<l>    read_image(Image, Files[i])</l>
+<l>    count_channels(Image, Channels)</l>
+<c></c>
+<l>    if (Channels &gt; 1)</l>
+<c>        </c>
+<l>        rgb1_to_gray(Image, Image)</l>
+<c>        </c>
+<l>    endif</l>
+<c>    </c>
+<l>    gen_empty_region(CalibPlateMarks)</l>
+<l>    create_calib_data('calibration_object', 1, 1, CalibDataID)</l>
+<l>    set_calib_data_calib_object(CalibDataID, 0, CalibObjDescr)</l>
+<l>    set_calib_data_cam_param(CalibDataID, 0, [], StartCamParam)</l>
+<c>    </c>
+<l>    PatternCoverageScore := 1.0</l>
+<l>    try</l>
+<l>        find_calib_object (Image, CalibDataID, 0, 0, 0, [], [])</l>
+<c>        * </c>
+<l>    catch (Exception)</l>
+<l>        PatternCoverageScore := 0</l>
+<l>    endtry</l>
+<c>    </c>
+<l>    if (PatternCoverageScore &gt; 0.9)</l>
+<c>        </c>
+<l>        tuple_images := [tuple_images, Files[i]]</l>
+<c>        </c>
+<l>    endif</l>
+<c>    </c>
+<l>endfor</l>
+<c></c>
+<c>***KALIBRACIJA</c>
+<l>TmpCtrl_FindCalObjParNames := 'sigma'</l>
+<l>TmpCtrl_FindCalObjParValues := 1</l>
+<l>create_calib_data ('calibration_object', 1, 1, CalibHandle)</l>
+<l>set_calib_data_cam_param (CalibHandle, 0, [], StartCamParam)</l>
+<l>set_calib_data_calib_object (CalibHandle, 0, CalibObjDescr)</l>
+<c></c>
+<l>for i := 0 to |tuple_images|-1 by 1</l>
+<c>    </c>
+<l>    read_image(Image, tuple_images[i])</l>
+<l>    count_channels(Image, Channels1)</l>
+<c>    </c>
+<l>    if (Channels1 &gt; 1)</l>
+<c>        </c>
+<l>        rgb1_to_gray(Image, Image)</l>
+<c>        </c>
+<l>    endif</l>
+<c>    </c>
+<l>    find_calib_object (Image, CalibHandle, 0, 0, i, TmpCtrl_FindCalObjParNames, TmpCtrl_FindCalObjParValues)</l>
+<c>    </c>
+<l>endfor</l>
+<c></c>
+<l>calibrate_cameras(CalibHandle, Errors)</l>
+<l>get_calib_data(CalibHandle, 'camera', 0, 'params', CameraParameters)</l>
+<l>get_calib_data(CalibHandle, 'calib_obj_pose', [0, 0], 'pose', CameraPose)</l>
+<l>set_origin_pose(CameraPose, 0.0, 0.0, 0.001, PoseNewOrigin)</l>
+<c></c>
+<l>Sx := CameraParameters[3]</l>
+<l>Sy := CameraParameters[4]</l>
+<l>Focus := CameraParameters[1]</l>
+<l>Kappa := CameraParameters[2]</l>
+<l>Cx := CameraParameters[5]</l>
+<l>Cy := CameraParameters[6]</l>
+<l>ImgWidth := CameraParameters[7]</l>
+<l>ImgHeight := CameraParameters[8]</l>
+<l>return ()</l>
+</body>
+<docu id="cam_calib">
+<parameters>
+<parameter id="CalibObjDescr"/>
+<parameter id="CameraParameters"/>
+<parameter id="Cx"/>
+<parameter id="Cy"/>
+<parameter id="Focus"/>
+<parameter id="ImagePath"/>
+<parameter id="ImgHeight"/>
+<parameter id="ImgWidth"/>
+<parameter id="Kappa"/>
+<parameter id="Sx"/>
+<parameter id="Sy"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="match_and_get_contours">
+<interface>
+<oo>
+<par name="Image" base_type="iconic" dimension="0"/>
+<par name="Deformations" base_type="iconic" dimension="0"/>
+<par name="ImageMirror" base_type="iconic" dimension="0"/>
+<par name="DXFContours" base_type="iconic" dimension="0"/>
+<par name="ImgContours" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="InputImageDestination" base_type="ctrl" dimension="0"/>
+<par name="InputCameraParamDestination" base_type="ctrl" dimension="0"/>
+<par name="InputDXFDestination" base_type="ctrl" dimension="0"/>
+<par name="ScaleFactor" base_type="ctrl" dimension="0"/>
+<par name="tolerance" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<l>set_system('clip_region', 'false')</l>
+<c></c>
+<l>dev_update_off()</l>
+<c></c>
+<l>read_image(Image, InputImageDestination)</l>
+<l>get_image_size(Image, Width, Height)</l>
+<c></c>
+<l>gen_empty_obj(Deformations)</l>
+<c></c>
+<c></c>
+<l>read_image(Image, InputImageDestination)</l>
+<l>count_channels(Image, Channels)</l>
+<l>if (Channels &gt; 1)</l>
+<l>    rgb1_to_gray(Image, GrayImage)</l>
+<l>endif</l>
+<l>read_tuple (InputCameraParamDestination, CameraParametersOriginal)</l>
+<l>CameraParametersFixed := CameraParametersOriginal</l>
+<l>set_cam_par_data(CameraParametersOriginal, 'kappa', 0, CameraParametersFixed)</l>
+<l>change_radial_distortion_cam_par('fullsize', CameraParametersOriginal, 0, CamParVirtualFullSize)    </l>
+<l>get_cam_par_data(CamParVirtualFullSize, 'image_width', WidthVirtual)</l>
+<l>get_cam_par_data(CamParVirtualFullSize, 'image_height', HeightVirtual)   </l>
+<l>gen_rectangle1(ROI, 0, 0, HeightVirtual-1, WidthVirtual-1)</l>
+<l>change_radial_distortion_image(GrayImage, ROI, ImageRectified, CameraParametersOriginal, CameraParametersFixed)</l>
+<c></c>
+<c></c>
+<l>read_contour_xld_dxf (Contours, InputDXFDestination, [], [], DxfStatus)</l>
+<l>union_adjacent_contours_xld(Contours, UnionContours1, 10, 1, 'attr_keep')</l>
+<l>hom_mat2d_identity(HomMat2DIdentity)    </l>
+<l>hom_mat2d_rotate(HomMat2DIdentity, rad(180), Height/2, Width/2, HomMat2DRotate)</l>
+<l>affine_trans_image(ImageRectified, ImageAffineTrans, HomMat2DRotate, 'constant', 'false')</l>
+<l>mirror_image(ImageAffineTrans, ImageMirror, 'column')</l>
+<l>smooth_image(ImageMirror, ImageSmooth, 'deriche2', 0.3)</l>
+<c></c>
+<c></c>
+<l>area_center_xld(UnionContours1, Area, Row, Column, PointOrder)</l>
+<l>hom_mat2d_translate(HomMat2DIdentity, -Row[0], -Column[0], HomMat2DTranslate)</l>
+<l>affine_trans_contour_xld(UnionContours1, ContoursAffineTrans2, HomMat2DTranslate)</l>
+<l>hom_mat2d_scale(HomMat2DIdentity, ScaleFactor, ScaleFactor, 0, 0, HomMat2DScale)</l>
+<l>affine_trans_contour_xld(ContoursAffineTrans2, ContoursAffineTrans, HomMat2DScale)</l>
+<l>create_shape_model_xld(ContoursAffineTrans, 'auto', rad(0), rad(360), 'auto', 'auto', 'ignore_local_polarity', 5, ModelID)</l>
+<l>get_shape_model_contours(ModelContours, ModelID, 1)            </l>
+<l>find_shape_model(ImageSmooth, ModelID, rad(0), rad(360), 0.1, 1, 0.8, 'least_squares', 0, 0.1, Row1, Column1, Angle, Score)            </l>
+<l>vector_angle_to_rigid(0, 0, 0, Row1, Column1, Angle, HomMat2D)</l>
+<l>affine_trans_contour_xld(ModelContours, DXFContours, HomMat2D)</l>
+<l>union_adjacent_contours_xld(DXFContours, DXFContours, 1, 1, 'attr_keep')</l>
+<c></c>
+<c></c>
+<l>threshold(ImageSmooth, Region, 0, 80)</l>
+<l>connection (Region, ConnectedRegions1)</l>
+<l>fill_up_shape (ConnectedRegions1, RegionFillUp, 'area', 1, 100000)</l>
+<l>area_center(RegionFillUp, Area1, Row2, Column2)</l>
+<l>tuple_max(Area1, Max)</l>
+<l>tuple_find(Area1, Max, Index)</l>
+<l>select_obj(RegionFillUp, Region, Index+1)</l>
+<l>dilation_circle(Region, RegionDilation, 10)</l>
+<l>shape_trans(RegionDilation, RegionTrans, 'rectangle2')</l>
+<l>reduce_domain(ImageSmooth, RegionTrans, ImageReduced)</l>
+<l>threshold(ImageReduced, Region1, 0, 130)</l>
+<l>connection(Region1, ConnectedRegions)</l>
+<l>select_shape(ConnectedRegions, SelectedRegions, 'area', 'and', 100000, 20000000)</l>
+<l>gen_contour_region_xld(SelectedRegions, ImgContours, 'border_holes')</l>
+<c></c>
+<c></c>
+<l>sort_contours_xld(ImgContours, ImgContours, 'upper_left', 'true', 'row')</l>
+<l>sort_contours_xld(DXFContours, DXFContours, 'upper_left', 'true', 'row')</l>
+<l>count_obj(ImgContours, Number1)</l>
+<l>count_obj(DXFContours, Number2)</l>
+<c></c>
+<c></c>
+<l>for cnt := 1 to Number1 by 1</l>
+<c>    </c>
+<l>    gen_empty_obj(Deformation)</l>
+<l>    select_obj(ImgContours, ObjectSelected1, cnt)</l>
+<l>    select_obj(DXFContours, ObjectSelected2, cnt)</l>
+<c>    </c>
+<l>    distance_contours_xld(ObjectSelected1, ObjectSelected2, ContourOut, 'point_to_segment')</l>
+<l>    get_contour_attrib_xld (ContourOut, 'distance', Distance)</l>
+<l>    segment_contour_attrib_xld(ContourOut, Deformation, 'distance', 'and', tolerance, 10000)</l>
+<l>    count_obj(Deformation, NumDef)</l>
+<c>    </c>
+<l>    if (NumDef != 0)</l>
+<c>        </c>
+<l>        concat_obj(Deformation, Deformations, Deformations)</l>
+<c>        </c>
+<l>    endif</l>
+<c>    </c>
+<l>endfor</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="match_and_get_contours">
+<parameters>
+<parameter id="DXFContours"/>
+<parameter id="Deformations"/>
+<parameter id="Image"/>
+<parameter id="ImageMirror"/>
+<parameter id="ImgContours"/>
+<parameter id="InputCameraParamDestination"/>
+<parameter id="InputDXFDestination"/>
+<parameter id="InputImageDestination"/>
+<parameter id="ScaleFactor"/>
+<parameter id="tolerance"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="set_cam_par_data">
+<interface>
+<ic>
+<par name="CameraParamIn" base_type="ctrl" dimension="0"/>
+<par name="ParamName" base_type="ctrl" dimension="0"/>
+<par name="ParamValue" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="CameraParamOut" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* set_cam_par_data sets the value of the parameter that</c>
+<c>* is given in ParamName in the tuple of camera parameters</c>
+<c>* given in CameraParamIn. The modified camera parameters</c>
+<c>* are returned in CameraParamOut.</c>
+<c>* </c>
+<c>* Check for consistent length of input parameters</c>
+<l>if (|ParamName| != |ParamValue|)</l>
+<l>    throw ('Different number of values in ParamName and ParamValue')</l>
+<l>endif</l>
+<c>* First, get the parameter names that correspond to the</c>
+<c>* elements in the input camera parameter tuple.</c>
+<l>get_cam_par_names (CameraParamIn, CameraType, CameraParamNames)</l>
+<c>* </c>
+<c>* Find the index of the requested camera data and return</c>
+<c>* the corresponding value.</c>
+<l>CameraParamOut := CameraParamIn</l>
+<l>for Index := 0 to |ParamName| - 1 by 1</l>
+<l>    ParamNameInd := ParamName[Index]</l>
+<l>    I := find(CameraParamNames,ParamNameInd)</l>
+<l>    if (I != -1)</l>
+<l>        CameraParamOut[I] := ParamValue[Index]</l>
+<l>    else</l>
+<l>        throw ('Wrong ParamName ' + ParamNameInd)</l>
+<l>    endif</l>
+<c>    * Check the consistency of focus and telecentricity</c>
+<l>    if (ParamNameInd == 'focus')</l>
+<l>        IsTelecentric := strstr(CameraType,'telecentric') != -1 and strstr(CameraType,'image_side_telecentric') == -1</l>
+<l>        if (IsTelecentric)</l>
+<l>            throw ('Focus for telecentric lenses is always 0, and hence, cannot be changed.')</l>
+<l>        endif</l>
+<l>        if (not IsTelecentric and ParamValue[Index] == 0.0)</l>
+<l>            throw ('Focus for non-telecentric lenses must not be 0.')</l>
+<l>        endif</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>return ()</l>
+</body>
+<docu id="set_cam_par_data">
+<abstract lang="en_US">&lt;proc:set_cam_par_data&gt; sets the value of ParamName in the camera parameter tuple CameraParamIn. The modified camera parameters  are returned in CameraParamOut. The following parameter names can be set:
+
+- *'focus'* [m]
+- *'magnification'* [-]
+- *'kappa'* [m&lt;sup&gt;-2&lt;/sup&gt;]
+- *'k1'* [m&lt;sup&gt;-2&lt;/sup&gt;]
+- *'k2'* [m&lt;sup&gt;-4&lt;/sup&gt;]
+- *'k3'* [m&lt;sup&gt;-6&lt;/sup&gt;]
+- *'p1'* [m&lt;sup&gt;-1&lt;/sup&gt;]
+- *'p2'* [ m&lt;sup&gt;-1&lt;/sup&gt;]
+- *'image_plane_dist'* [m]
+- *'tilt'* [deg]
+- *'rot'* [deg]
+- *'sx'* [m/px]
+- *'sy'* [m/px]
+- *'cx'* [px]
+- *'cy'* [px]
+- *'vx'* [m/scanline]
+- *'vy'* [m/scanline]
+- *'vz'* [m/scanline]
+- *'image_width'* [px]
+- *'image_height'* [px]
+
+If the camera type does not support the requested value, an exception is raised.</abstract>
+<chapters lang="de_DE">
+<item>Kalibrierung</item>
+<item>Kameraparameter</item>
+</chapters>
+<chapters lang="en_US">
+<item>Calibration</item>
+<item>Camera Parameters</item>
+</chapters>
+<example lang="en_US">read_cam_par ('campar.dat', CameraParam)
+get_cam_par_data (CameraParam, 'sx', Sx)
+get_cam_par_data (CameraParam, 'sy', Sy)
+get_cam_par_data (CameraParam, 'cx', Cx)
+get_cam_par_data (CameraParam, 'cy', Cy)
+get_cam_par_data (CameraParam, 'image_width', ImageWidth)
+get_cam_par_data (CameraParam, 'image_height', ImageHeight)
+*
+set_cam_par_data (CameraParam, 'sx', 2.0*Sx, CameraParam)
+set_cam_par_data (CameraParam, 'sy', 2.0*Sy, CameraParam)
+set_cam_par_data (CameraParam, 'cx', 0.5*Cx, CameraParam)
+set_cam_par_data (CameraParam, 'cy', 0.5*Cy, CameraParam)
+set_cam_par_data (CameraParam, 'image_width', 0.5*ImageWidth, CameraParam)
+set_cam_par_data (CameraParam, 'image_height', 0.5*ImageHeight, CameraParam)</example>
+<keywords lang="de_DE">
+<item>Kameraparameter kalibrieren</item>
+<item>Kamera-Kalibrierparameter erhalten</item>
+<item>Kameramodell</item>
+<item>interne Kameraparameter</item>
+<item>interne Kameraparameter kalibrieren</item>
+<item>kalibrierte interne Kameraparameter erhalten</item>
+</keywords>
+<keywords lang="en_US">
+<item>camera calibration parameters</item>
+<item>camera calibration result</item>
+<item>calibrate camera parameters</item>
+<item>calibrate internal camera parameters</item>
+<item>calibrated internal camera parameters</item>
+</keywords>
+<library lang="en_US">MVTec Standard Procedures</library>
+<predecessor>
+<item>read_cam_par</item>
+<item>deserialize_cam_par</item>
+<item>get_calib_data</item>
+<item>get_deformable_model_params</item>
+<item>get_sheet_of_light_param</item>
+<item>get_shape_model_3d_param</item>
+</predecessor>
+<see_also>
+<item>calibrate_cameras</item>
+<item>get_cam_par_data</item>
+<item>get_cam_par_names</item>
+<item>gen_cam_par_area_scan_division</item>
+<item>gen_cam_par_area_scan_polynomial</item>
+<item>gen_cam_par_area_scan_tilt_division</item>
+<item>gen_cam_par_area_scan_tilt_polynomial</item>
+<item>gen_cam_par_area_scan_telecentric_division</item>
+<item>gen_cam_par_area_scan_telecentric_polynomial</item>
+<item>gen_cam_par_area_scan_tilt_bilateral_telecentric_division</item>
+<item>gen_cam_par_area_scan_tilt_bilateral_telecentric_polynomial</item>
+<item>gen_cam_par_area_scan_tilt_object_side_telecentric_division</item>
+<item>gen_cam_par_area_scan_tilt_object_side_telecentric_polynomial</item>
+<item>gen_cam_par_area_scan_hypercentric_division</item>
+<item>gen_cam_par_area_scan_hypercentric_polynomial</item>
+<item>gen_cam_par_line_scan_division</item>
+<item>gen_cam_par_line_scan_polynomial</item>
+<item>gen_cam_par_line_scan_telecentric_division</item>
+<item>gen_cam_par_line_scan_telecentric_polynomial</item>
+</see_also>
+<short lang="en_US">Set the value of a specified camera parameter in the camera parameter tuple.</short>
+<parameters>
+<parameter id="CameraParamIn">
+<default_type>real</default_type>
+<description lang="en_US">Input camera parameter tuple.</description>
+<mixed_type>optional</mixed_type>
+<sem_type>campar</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+<item>string</item>
+</type_list>
+</parameter>
+<parameter id="CameraParamOut">
+<default_type>real</default_type>
+<description lang="en_US">Output camera parameter tuple.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>campar</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+<item>string</item>
+</type_list>
+</parameter>
+<parameter id="ParamName">
+<default_type>string</default_type>
+<default_value>'image_width'</default_value>
+<description lang="en_US">Name of the camera parameter for that the value should be set.</description>
+<mixed_type>false</mixed_type>
+<multivalue>optional</multivalue>
+<sem_type>string</sem_type>
+<type_list>
+<item>string</item>
+</type_list>
+<value_list>
+<item>'focus'</item>
+<item>'magnification'</item>
+<item>'kappa'</item>
+<item>'k1'</item>
+<item>'k2'</item>
+<item>'k3'</item>
+<item>'p1'</item>
+<item>'p2'</item>
+<item>'image_plane_dist'</item>
+<item>'tilt'</item>
+<item>'rot'</item>
+<item>'sx'</item>
+<item>'sy'</item>
+<item>'cx'</item>
+<item>'cy'</item>
+<item>'image_width'</item>
+<item>'image_height'</item>
+<item>'vx'</item>
+<item>'vy'</item>
+<item>'vz'</item>
+</value_list>
+</parameter>
+<parameter id="ParamValue">
+<default_type>real</default_type>
+<description lang="en_US">Value of the camera parameter.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>optional</multivalue>
+<sem_type>real</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="write_contours">
+<interface>
+<io>
+<par name="DXFContours" base_type="iconic" dimension="0"/>
+<par name="ImgContours" base_type="iconic" dimension="0"/>
+<par name="Deformations" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="OutputDestination" base_type="ctrl" dimension="0"/>
+<par name="DXFContOutput" base_type="ctrl" dimension="0"/>
+<par name="ImgContOutput" base_type="ctrl" dimension="0"/>
+<par name="DeformContOutput" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<l>count_obj(DXFContours, NumberDXF)</l>
+<l>file_exists(OutputDestination, FileExists)</l>
+<c></c>
+<l>if (FileExists == 0)</l>
+<l>    make_dir(OutputDestination)</l>
+<l>endif</l>
+<c></c>
+<l>set_current_dir (OutputDestination)</l>
+<l>make_dir (DXFContOutput)</l>
+<l>make_dir(DXFContOutput + '/row')</l>
+<l>make_dir(DXFContOutput + '/col')</l>
+<c></c>
+<l>for i := 1 to NumberDXF by 1</l>
+<c>    </c>
+<l>    select_obj(DXFContours, ObjectSelected, i)</l>
+<l>    get_contour_xld(ObjectSelected, RowContours, ColContours)</l>
+<l>    write_tuple(RowContours, DXFContOutput + '/' + 'row' + '/' + i)</l>
+<l>    write_tuple(RowContours, DXFContOutput + '/' + 'col' + '/' + i)</l>
+<c>    </c>
+<l>endfor</l>
+<c></c>
+<l>make_dir(ImgContOutput)</l>
+<l>make_dir(ImgContOutput + '/row')</l>
+<l>make_dir(ImgContOutput + '/col')</l>
+<l>count_obj(ImgContours, ImageContourNumber)</l>
+<c></c>
+<l>for j := 1 to ImageContourNumber by 1</l>
+<c>    </c>
+<l>    select_obj(ImgContours, ObjectSelected, j)</l>
+<l>    get_contour_xld(ObjectSelected, RowContours, ColContours)</l>
+<l>    write_tuple(RowContours, ImgContOutput + '/row/' + j)</l>
+<l>    write_tuple(ColContours, ImgContOutput + '/col/' + j)</l>
+<c>    </c>
+<l>endfor</l>
+<c></c>
+<l>make_dir(DeformContOutput)</l>
+<l>make_dir(DeformContOutput + '/row')</l>
+<l>make_dir(DeformContOutput + '/col')</l>
+<l>count_obj(Deformations, NumDeform)</l>
+<c></c>
+<l>if (NumDeform != 0)</l>
+<c>    </c>
+<l>    for j := 1 to NumDeform by 1</l>
+<c>        </c>
+<l>        select_obj(Deformations, ObjectSelected, j)</l>
+<l>        get_contour_xld(ObjectSelected, RowContours, ColContours)</l>
+<l>        write_tuple(RowContours, DeformContOutput + '/' + 'row' + '/' + j)</l>
+<l>        write_tuple(ColContours, DeformContOutput + '/' + 'col' + '/' + j)</l>
+<c>        </c>
+<c>        </c>
+<l>    endfor</l>
+<c>    </c>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="write_contours">
+<parameters>
+<parameter id="DXFContOutput"/>
+<parameter id="DXFContours"/>
+<parameter id="DeformContOutput"/>
+<parameter id="Deformations"/>
+<parameter id="ImgContOutput"/>
+<parameter id="ImgContours"/>
+<parameter id="OutputDestination"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

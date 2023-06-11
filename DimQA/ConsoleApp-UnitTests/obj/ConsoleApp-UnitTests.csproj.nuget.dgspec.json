@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {}
+  },
+  "projects": {
+    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
+        "projectName": "arsClassLibrary",
+        "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
+        "projectName": "ConsoleApp-UnitTests",
+        "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Win10\\.nuget\\packages\\",
+        "outputPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Win10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
+                "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
