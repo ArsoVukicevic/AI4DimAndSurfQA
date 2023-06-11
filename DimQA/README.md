@@ -1,6 +1,5 @@
-# AI4DimAndSurfQA
+# SurfQA - surface inspection module
 
-DimQA - dimensional inspection module
+The module for surface inspection is developed upon the Halcon MVTec library https://www.mvtec.com/products/halcon 
 
-SurfQA - surface inspection module
-
+In the folder 
