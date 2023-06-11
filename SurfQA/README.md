@@ -1,6 +1,6 @@
-# AI4DimAndSurfQA
+# SurfQA - surface inspection module
 
-DimQA - dimensional inspection module
 
-SurfQA - surface inspection module
+
+
 
