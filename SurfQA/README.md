@@ -16,7 +16,11 @@ Notes:
 # Shor guide how to run it on your side
 
 Step #1 - Download this repository
+
 Step #2 - Run Client.py
+
 Step #3 - Download "best.pt" weights of the pretrained model
+
 Step #4a - To run Client.py as a web service - run also Flask_server.py 
+
 Step #4b - To run Client.py as a standalone app, change flag variable into it
