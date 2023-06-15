@@ -13,13 +13,13 @@ Notes:
 * model weights "best.pt" are available here: https://drive.google.com/file/d/1vlunbov-4zywAdXJzEwJnUspf0sr9Y-9/view?usp=sharing 
 * we trained the ultralytics yolov8 model - documentaion is available on the official repository https://github.com/ultralytics/ultralytics
 
-# Shor guide how to run it on your side
+# Short guide how to run it on your side
 
 Step #1 - Download this repository
 
-Step #2 - Run Client.py
+Step #2 - Download "best.pt" weights of the pretrained model
 
-Step #3 - Download "best.pt" weights of the pretrained model
+Step #3 - Run Client.py
 
 Step #4a - To run Client.py as a web service - run also Flask_server.py 
 
