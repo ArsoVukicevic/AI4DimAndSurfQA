@@ -24,3 +24,13 @@ Step #3 - Run Client.py
 Step #4a - To run Client.py as a web service - run also Flask_server.py 
 
 Step #4b - To run Client.py as a standalone app, change flag variable into it
+
+# Requirements
+install the following list of packages
+- requests==2.24.0
+- json5==0.8.5
+- jsonpickle==1.4.1
+- opencv-python==4.1.2.30
+- numpy==1.19.1
+- Flask==1.1.4
+- ultralytics==8.0.117
