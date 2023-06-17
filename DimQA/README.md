@@ -6,7 +6,40 @@ The source code is available in the C# solution, which structure is illustrated 
 
 ![project image](https://github.com/ArsoVukicevic/AI4DimAndSurfQA/blob/main/DimQA/VS_project.jpg)
 
+It consists of two projects, one class library, and one console application. 
 
-The project "ConsoleApp-UnitTests" consists of two unit-test that demonstraes how to perform camera calibration and dimensional inspection 
+The arsClassLibrary project contains three classes:
+*HalconCalibration - containing  code for calibrating the camera using the MVTec calibration table (see detailed video tutorial here: https://www.youtube.com/watch?v=iEjH244KRbw)
+*IO - contains helper functions for reading/writing data
+*QA - contains DimQA code for performing dimensional inspection
+
+For end-users, of interest is the DoAI function of QA.DimQA class:
+```
+public void DoAI()
+            {
+                HDevEngine engine = new HDevEngine();
+                engine.SetProcedurePath(this.getHalconProcedurePath());
+
+                HDevProcedure procedure = new HDevProcedure("match_and_get_contours");
+                HDevProcedureCall procedureCall = new HDevProcedureCall(procedure);
+
+                procedureCall.SetInputCtrlParamTuple("InputImageDestination", this.getImagePath());
+                procedureCall.SetInputCtrlParamTuple("InputCameraParamDestination", this.getCameraParametersPath());
+                procedureCall.SetInputCtrlParamTuple("InputDXFDestination", this.getDXFPath());
+                procedureCall.SetInputCtrlParamTuple("ScaleFactor", this.getScaleFactor());
+                procedureCall.SetInputCtrlParamTuple("tolerance", this.getTolerance());
+
+                procedureCall.Execute();
+
+                // take Halcon outputs
+                this.ImageRaw = procedureCall.GetOutputIconicParamImage("Image");
+                this.ImageRawMirrorGray = procedureCall.GetOutputIconicParamImage("ImageMirror");
+                this.Deformations = procedureCall.GetOutputIconicParamXld("Deformations");
+                this.DXFContours = procedureCall.GetOutputIconicParamXld("DXFContours");
+                this.ImgContours = procedureCall.GetOutputIconicParamXld("ImgContours");
+            }
+```
+
+The project "ConsoleApp-UnitTests" consists of two unit-test that demonstrate how to perform two key steps: 1) camera calibration and 2) dimensional inspection 
 * public void test_shape_matching()
 * public void test_calibration_using_caltab()
