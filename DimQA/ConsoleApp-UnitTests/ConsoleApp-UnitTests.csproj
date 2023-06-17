@@ -18,13 +18,4 @@
     <ProjectReference Include="..\arsClassLibrary\arsClassLibrary.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="halcondotnet">
-      <HintPath>..\AI4DimSurfQA\bin\Debug\netcoreapp3.1\halcondotnet.dll</HintPath>
-    </Reference>
-    <Reference Include="hdevenginedotnet">
-      <HintPath>..\AI4DimSurfQA\bin\Debug\netcoreapp3.1\hdevenginedotnet.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

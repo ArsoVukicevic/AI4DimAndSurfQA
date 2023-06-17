@@ -72,3 +72,24 @@ D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF propo
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.dll
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.pdb
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.genruntimeconfig.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.exe
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.deps.json
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.runtimeconfig.json
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.runtimeconfig.dev.json
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\ConsoleApp-UnitTests.pdb
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\arsClassLibrary.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\halcondotnet.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\hdevenginedotnet.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\qualityControl.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\bin\Debug\netcoreapp3.1\arsClassLibrary.pdb
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.csproj.AssemblyReference.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.AssemblyInfoInputs.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.AssemblyInfo.cs
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.csproj.CopyComplete
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.pdb
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\ConsoleApp-UnitTests\obj\Debug\netcoreapp3.1\ConsoleApp-UnitTests.genruntimeconfig.cache

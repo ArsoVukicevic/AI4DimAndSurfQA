@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {}
+    "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {}
   },
   "projects": {
-    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
+    "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
         "projectName": "arsClassLibrary",
-        "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
+        "projectPath": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj",
         "frameworks": {
           "net461": {
             "projectReferences": {}
@@ -19,14 +19,14 @@
         "net461": {}
       }
     },
-    "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {
+    "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
         "projectName": "ConsoleApp-UnitTests",
-        "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
+        "projectPath": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\ConsoleApp-UnitTests\\ConsoleApp-UnitTests.csproj",
         "packagesPath": "C:\\Users\\Win10\\.nuget\\packages\\",
-        "outputPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\ConsoleApp-UnitTests\\obj\\",
+        "outputPath": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\ConsoleApp-UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Win10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,8 +43,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
-                "projectPath": "D:\\_Macuzic\\_proposal pisanje projekata\\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\\__Source_code\\05 RAMP_GitHub\\git_folder\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj"
+              "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj": {
+                "projectPath": "C:\\Users\\Win10\\Downloads\\shop4cf_git\\AI4DimAndSurfQA\\DimQA\\arsClassLibrary\\arsClassLibrary.csproj"
               }
             }
           }

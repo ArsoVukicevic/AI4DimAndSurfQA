@@ -28,6 +28,22 @@
           "arsClassLibrary.dll": {}
         }
       },
+      "halcondotnet/20.11.3.0": {
+        "runtime": {
+          "halcondotnet.dll": {
+            "assemblyVersion": "20.11.3.0",
+            "fileVersion": "20.11.3.0"
+          }
+        }
+      },
+      "hdevenginedotnet/20.11.3.0": {
+        "runtime": {
+          "hdevenginedotnet.dll": {
+            "assemblyVersion": "20.11.3.0",
+            "fileVersion": "20.11.3.0"
+          }
+        }
+      },
       "qualityControl/1.0.0.0": {
         "runtime": {
           "qualityControl.dll": {
@@ -53,6 +69,16 @@
     },
     "arsClassLibrary/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "halcondotnet/20.11.3.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "hdevenginedotnet/20.11.3.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
