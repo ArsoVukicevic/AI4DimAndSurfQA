@@ -64,3 +64,29 @@ Specifically, in the "Caltab" folder you can find the following files:
 * calbtab.hdevelp - is hdevelop code, where you can create your own caltab (e.g. bigger one) - create_caltab documentation is available online at: https://www.mvtec.com/doc/halcon/12/en/create_caltab.html
 
 Calibration input images are placed in "Halcon/Images". You need to have a physical calibration table, and a fixed camera and follow the instructions from the video above to get a sufficient number of images. 
+
+## Step #2 - Run the calibration procedure
+
+public void test_calibration_using_caltab()
+        {
+            // set inputs
+            arsClassLibrary.HalconCalibration halconCalibration;
+            halconCalibration = new HalconCalibration();
+            halconCalibration.readCalibrationParametersFromTXT(System.IO.Path.Combine(halconCalibration.getCalibrationFolderPath(), "HalconInput.txt"));
+
+            double SxIn    = 5.75e-006;
+            double SyIn    = 5.75e-006;
+            double FocusIn = 0.0500   ;
+
+            halconCalibration.callHalconFunctionForCalibration(SxIn, SyIn, FocusIn);
+
+            // write intpus for shape matching
+            string calibration_input_txt_file_path = System.IO.Path.Combine(halconCalibration.getCalibrationFolderPath(), "HalconInput.txt");
+            using (System.IO.StreamWriter writer = new System.IO.StreamWriter(calibration_input_txt_file_path))
+            {
+                writer.WriteLine("# Focus Kappa Sx         Sy         Cx  Cy  ImageWidth  ImageHeight ScaleFactor");
+                writer.WriteLine(FocusIn.ToString() + " 0 " + SxIn.ToString() + " " + SyIn.ToString() + " 0   0   0           0  " + halconCalibration.getScaleFactor().ToString());
+            }
+        }
+```
+
