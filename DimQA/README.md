@@ -142,3 +142,6 @@ In the project "ConsoleApp-UnitTests", open the file "Program.cs". Here, you can
             test.test_calibration_using_caltab();
             test.test_shape_matching();
 ```
+
+# Output folder
+Above listed paths are related to the following Visual Studio 2019 output folder:  https://github.com/ArsoVukicevic/AI4DimAndSurfQA/tree/main/DimQA/ConsoleApp-UnitTests/bin/Debug/netcoreapp3.1 
