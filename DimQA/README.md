@@ -131,3 +131,14 @@ The shape-matching procedure assumes that calibration is done previously and tha
             dimQA.saveHalconOutputs();
         }
 ```
+
+
+# Calling/testing DimQA from the console app
+
+In the project "ConsoleApp-UnitTests", open the file "Program.cs". Here, you can see only two lines of code that are needed to run, test and debug above explained calibration and shape matching functions developed on the top of MVTec Halcon library:
+
+```C#
+            ConsoleApp_UnitTests.DimQA_tests test = new ConsoleApp_UnitTests.DimQA_tests();
+            test.test_calibration_using_caltab();
+            test.test_shape_matching();
+```
