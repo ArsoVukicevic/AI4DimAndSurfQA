@@ -48,3 +48,7 @@ public void DoAI()
 The project "ConsoleApp-UnitTests" consists of two unit-test that demonstrate how to perform two key steps: 1) camera calibration and 2) dimensional inspection 
 * public void test_shape_matching()
 * public void test_calibration_using_caltab()
+
+# test_calibration_using_caltab()
+
+Before performing shape matching, the camera needs to be calibrated. In this project, we used MVTec caltab calibration plate. There is the official video tutorial from MVTec how to do it: https://www.youtube.com/watch?v=iEjH244KRbw.
