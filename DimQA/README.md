@@ -1,6 +1,6 @@
 # SurfQA - surface inspection module
 
-The module for surface inspection is developed upon the Halcon MVTec library https://www.mvtec.com/products/halcon 
+The module for surface inspection is developed upon the Halcon MVTec library https://www.mvtec.com/products/halcon. Accordingly, "halcondontet" and "hdevelopdotnet" DLL files are added to the arsClassLibrary references. 
 
 The source code is available in the C# solution, which structure is illustrated below: 
 
