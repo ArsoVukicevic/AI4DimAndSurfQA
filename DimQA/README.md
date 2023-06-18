@@ -14,7 +14,7 @@ The arsClassLibrary project contains three classes:
 *QA - contains DimQA code for performing dimensional inspection
 
 For end-users, of interest is the DoAI function of QA.DimQA class:
-```
+```C#
 public void DoAI()
             {
                 HDevEngine engine = new HDevEngine();
