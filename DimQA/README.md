@@ -51,12 +51,15 @@ The project "ConsoleApp-UnitTests" consists of two unit-test that demonstrate ho
 
 # test_calibration_using_caltab()
 
-Before performing shape matching, the camera needs to be calibrated. In this project, we used MVTec caltab calibration plate. There is the official video tutorial from MVTec how to do it: https://www.youtube.com/watch?v=iEjH244KRbw.
+* Step #1 - Prepare input files to run calibration procedure
+* Before performing shape matching, the camera needs to be calibrated. In this project, we used MVTec caltab calibration plate. There is the official video tutorial from MVTec how to do it: https://www.youtube.com/watch?v=iEjH244KRbw.
 
-Calibration input files are placed in "Halcon/Calibration" folder: 
+* Calibration input files are placed in "Halcon/Calibration" folder: 
 
-Specifically, in the "Caltab" folder you can find following files:
-* caltab.jpg      - image of caltab
-* caltab.ps       - if you want to print your own calibration table
-* calplate.cpd    - info file, that will be read by the HDevelop code to get calibration plate info
-* calbtab.hdevelp - is hdevelop code, where you can create your own caltab (e.g. bigger one) - create_caltab documentation is available online at: https://www.mvtec.com/doc/halcon/12/en/create_caltab.html
+* Specifically, in the "Caltab" folder you can find following files:
+** caltab.jpg      - image of caltab
+** caltab.ps       - if you want to print your own calibration table
+** calplate.cpd    - info file, that will be read by the HDevelop code to get calibration plate info
+** calbtab.hdevelp - is hdevelop code, where you can create your own caltab (e.g. bigger one) - create_caltab documentation is available online at: https://www.mvtec.com/doc/halcon/12/en/create_caltab.html
+
+*  Calibration input images are placed in "Halcon/Images". You need to have a physical calibration table, a fixed camera and follow the instructions from the video above to get a sufficient number of images. 
