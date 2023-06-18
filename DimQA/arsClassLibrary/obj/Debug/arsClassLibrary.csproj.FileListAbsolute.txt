@@ -37,3 +37,14 @@ D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF propo
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.csproj.CopyComplete
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.dll
 D:\_Macuzic\_proposal pisanje projekata\2022 Proposal - 2022 KG-ETF SHP4CF proposal (ODOBRENO) --------------------------\__Source_code\05 RAMP_GitHub\git_folder\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.pdb
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\arsClassLibrary.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\arsClassLibrary.pdb
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\halcondotnet.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\hdevenginedotnet.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\bin\Debug\qualityControl.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.csproj.AssemblyReference.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.csproj.CopyComplete
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.dll
+C:\Users\Win10\Downloads\shop4cf_git\AI4DimAndSurfQA\DimQA\arsClassLibrary\obj\Debug\arsClassLibrary.pdb

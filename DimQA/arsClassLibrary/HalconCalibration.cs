@@ -383,9 +383,9 @@ namespace arsClassLibrary
 
             procedureCall.SetInputCtrlParamTuple("ImagePath", ImagesPath);
             procedureCall.SetInputCtrlParamTuple("CalibObjDescr", CalibPlate);
-            procedureCall.SetInputCtrlParamTuple("SxIn", SxIn);
-            procedureCall.SetInputCtrlParamTuple("SyIn", SyIn);
-            procedureCall.SetInputCtrlParamTuple("FocusIn", FocusIn);
+            //procedureCall.SetInputCtrlParamTuple("SxIn", SxIn);
+            //procedureCall.SetInputCtrlParamTuple("SyIn", SyIn);
+            //procedureCall.SetInputCtrlParamTuple("FocusIn", FocusIn);
 
             procedureCall.Execute();
 
@@ -409,6 +409,7 @@ namespace arsClassLibrary
 
             this.setCalibrationParameters(Focus.D, Kappa.D, Sx.D, Sy.D, Cx.D, Cy.D, ImageWidht.D, ImageHeight.D, scale_factor);
 
+            // save calibrtaion results
             CamParam.WriteTuple(System.IO.Path.Combine("Halcon", "Calibration" , "CamParam.tup"));
 
         }

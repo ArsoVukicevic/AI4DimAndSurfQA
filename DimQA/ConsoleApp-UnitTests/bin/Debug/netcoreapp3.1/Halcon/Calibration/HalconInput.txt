@@ -1,2 +1,2 @@
 # Focus Kappa Sx         Sy         Cx  Cy  ImageWidth  ImageHeight ScaleFactor
-0,03583 0 0,0000032106 0,0000032106 0   0   0           0  10,47415527218134
+0,05 0 5,75E-06 5,75E-06 0   0   0           0  10,47415527218134

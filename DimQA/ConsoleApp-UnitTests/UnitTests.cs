@@ -35,24 +35,22 @@ namespace ConsoleApp_UnitTests
             dimQA.setResultsFolder(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon", "ShapeMatching", "Outputs"));
             // call the procedure
             dimQA.DoAI();
-            // C# prikaze u GUI
-            //dimQA.drawHalconResultsOnHalconWindows(ref this.hWindowDump);// not possible in console app
-            //dimQA.drawDXF(ref this.hSmartWindowControl_DXF_View); // not possible in console app
-            // Halkon upise rezultate u foldere
+            // results in readable format
             dimQA.saveHalconOutputs();
         }
 
         public void test_calibration_using_caltab()
         {
+            // set inputs
             arsClassLibrary.HalconCalibration halconCalibration;
-            halconCalibration = new HalconCalibration();
+            halconCalibration = new HalconCalibration(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon"));
             halconCalibration.readCalibrationParametersFromTXT(System.IO.Path.Combine(halconCalibration.getCalibrationFolderPath(), "HalconInput.txt"));
 
-            double SxIn    = 5.75e-006;
-            double SyIn    = 5.75e-006;
-            double FocusIn = 0.0500   ;
+            double SxIn    = 5.75e-006; // camera pixel size X direction
+            double SyIn    = 5.75e-006; // camera pixel size Y direction
+            double FocusIn = 0.0500   ; // camera focus
 
-            halconCalibration.callHalconFunctionForCalibration(SxIn, SyIn, FocusIn);
+            halconCalibration.callHalconFunctionForCalibration(SxIn, SyIn, FocusIn);      
 
             // write intpus for shape matching
             string calibration_input_txt_file_path = System.IO.Path.Combine(halconCalibration.getCalibrationFolderPath(), "HalconInput.txt");
