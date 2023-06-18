@@ -67,6 +67,9 @@ Calibration input images are placed in "Halcon/Images". You need to have a physi
 
 ## Step #2 - Run the calibration procedure
 
+Note: the following code is our own implementation, where we use .txt files for temporary saving files - you can avoid this practice in your implementation. 
+
+```C#
 public void test_calibration_using_caltab()
         {
             // set inputs
