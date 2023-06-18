@@ -93,3 +93,41 @@ public void test_calibration_using_caltab()
         }
 ```
 
+# test_shape_matching()
+
+The shape-matching procedure assumes that calibration is done previously and that following inputs are available:
+* input image - "test_images\\IMG_0034.JPG" in the following code snippet
+* camera calibration parameters - "CamParam.tup"
+* halcon hdevelop procedure - "leather_quality_control_lib.hdpl"
+* dxf file that contains referent drawing to be compared with contours detected from input images - "Tool#1.dxf"
+
+```C#
+        public void test_shape_matching()
+        {
+            // define dimQA object
+            arsClassLibrary.QA.DimQA dimQA;
+            // instance
+            dimQA = new arsClassLibrary.QA.DimQA();
+            dimQA.setImagePath("test_images\\IMG_0034.JPG");
+            string camera_parameters_path = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon", "Calibration", "CamParam.tup");
+            dimQA.setCameraParametersPath(camera_parameters_path);
+            string HalconProcedurePath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon", "leather_quality_control_lib.hdpl");
+            dimQA.setHalconProcedurePath(HalconProcedurePath);
+            string DxfPath = System.IO.Path.Combine("test_tools", "Tool#1.dxf");
+            dimQA.setDXFPath(DxfPath); 
+            //
+            string halcon_output_path = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon", "Calibration", "HalconOutput.txt");
+            string[] lines = System.IO.File.ReadAllLines(halcon_output_path);
+            // # FocalLenght, Sx, Sy, Kappa, Cx, Cy, ImageWidth, ImageHeight, ScaleFactor
+            //   1            2   3   4      5   6   7           8            9
+            List<string> parameters_string = lines[1].Split(' ').Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+            List<double> parameters_double = parameters_string.ConvertAll(double.Parse);
+            dimQA.setScaleFactor(parameters_double[8]);
+            dimQA.setTolerance(12);
+            dimQA.setResultsFolder(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Halcon", "ShapeMatching", "Outputs"));
+            // Call the procedure
+            dimQA.DoAI();
+            // Write shape matching results in the results-folder
+            dimQA.saveHalconOutputs();
+        }
+```
