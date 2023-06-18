@@ -17,26 +17,31 @@ For end-users, of interest is the DoAI function of QA.DimQA class:
 ```C#
 public void DoAI()
             {
+                // set HDevEngine object
                 HDevEngine engine = new HDevEngine();
+                // set path to the *.hdlp function (h develop function, in this project this is "leather_quality_control_lib.hdpl")
                 engine.SetProcedurePath(this.getHalconProcedurePath());
 
+                // get a "match_and_get_contours" procedure from the hdlp
                 HDevProcedure procedure = new HDevProcedure("match_and_get_contours");
                 HDevProcedureCall procedureCall = new HDevProcedureCall(procedure);
 
+                // set input parameters for "match_and_get_contours"
                 procedureCall.SetInputCtrlParamTuple("InputImageDestination", this.getImagePath());
                 procedureCall.SetInputCtrlParamTuple("InputCameraParamDestination", this.getCameraParametersPath());
                 procedureCall.SetInputCtrlParamTuple("InputDXFDestination", this.getDXFPath());
                 procedureCall.SetInputCtrlParamTuple("ScaleFactor", this.getScaleFactor());
                 procedureCall.SetInputCtrlParamTuple("tolerance", this.getTolerance());
 
+                // execute procedure
                 procedureCall.Execute();
 
-                // take Halcon outputs
-                this.ImageRaw = procedureCall.GetOutputIconicParamImage("Image");
+                //Take Halcon outputs
+                this.ImageRaw           = procedureCall.GetOutputIconicParamImage("Image");
                 this.ImageRawMirrorGray = procedureCall.GetOutputIconicParamImage("ImageMirror");
-                this.Deformations = procedureCall.GetOutputIconicParamXld("Deformations");
-                this.DXFContours = procedureCall.GetOutputIconicParamXld("DXFContours");
-                this.ImgContours = procedureCall.GetOutputIconicParamXld("ImgContours");
+                this.Deformations       = procedureCall.GetOutputIconicParamXld("Deformations");
+                this.DXFContours        = procedureCall.GetOutputIconicParamXld("DXFContours");
+                this.ImgContours        = procedureCall.GetOutputIconicParamXld("ImgContours");
             }
 ```
 
